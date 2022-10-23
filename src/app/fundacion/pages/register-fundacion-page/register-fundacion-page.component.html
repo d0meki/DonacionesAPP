@@ -1,0 +1,95 @@
+<div class="h-screen">
+    <form class="w-1/2 flex flex-col border mx-auto mt-20 py-5 px-16 bg-white rounded-md">
+        <div class="my-3 mb-6 text-center font-bold text-lg text-blue-800 ">
+            <p> Registro de Fundacion</p>
+        </div>
+        <div class="flex flex-col my-2">
+            <label class="text-gray-500 text-sm mb-1s"
+            for="name" 
+            > Nombre de Fundación</label>
+            <input class="border py-1 px-4 focus:bg-slate-100  border-blue-700 shadow-md rounded-sm" required
+                id="name"
+                type="text"
+            />
+        </div>
+        <div class="flex flex-col my-2">
+            <label class="text-gray-500 text-sm mb-1s"
+            for="Description"
+            > Descripción de Fundación</label>
+            <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm" required
+                id="description"
+                type="text"
+            />
+        </div>
+        <div class="flex justify-between">
+            <div class="flex flex-col my-2 w-1/2 mr-5">
+                <label class="text-gray-500 text-sm mb-1s" 
+                    for="business"
+                > Razon Social:</label>
+                <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm" required
+                    id="business"
+                    type="text"
+                />
+            </div>
+            <div class="flex flex-col my-2 w-1/2 ml-5">
+                <label class="text-gray-500 text-sm mb-1s"
+                for="business2"
+                > Razon social:</label>
+                <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm" required
+                    id="business2"
+                    type="text"
+                />
+            </div>
+        </div>
+        <div class="flex justify-between">
+            <div class="flex flex-col my-2 w-1/2 mr-5">
+                <label class="text-gray-500 text-sm mb-1s" 
+                    for="country"
+                    (click)="setStateCountry()"
+                > Pais:</label>
+                <!-- <div class="overflow-y-scroll h-20" *ngIf="stateCountry">
+                    <ul *ngFor="let count of countriesList"   
+                        class="menu bg-white "
+                    > 
+                        <li><a> {{count.capital}}</a></li>
+                    </ul>
+                </div> -->
+                <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm" required
+                    id="country"
+                    type="text"
+                />
+            </div>
+            <div class="flex flex-col my-2 w-1/2 ml-5">
+                <label class="text-gray-500 text-sm mb-1s"
+                for="location"
+                > Ubicación:</label>
+                <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm" required
+                    id="location"
+                    type="text"
+                />
+            </div>
+        </div>
+        <div class="flex justify-between">
+            <div class="flex flex-col my-2 w-1/2 mr-5">
+                <label class="text-gray-500 text-sm mb-1s" 
+                    for="email"
+                > Correo Electronico:</label>
+                <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm" required
+                    id="email"
+                    type="email"
+                />
+            </div>
+            <div class="flex flex-col my-2 w-1/2 ml-5">
+                <label class="text-gray-500 text-sm mb-1s"
+                for="phone"
+                > Telefono:</label>
+                <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-smd" required
+                    id="phone"
+                    type="number"
+                />
+            </div>
+        </div>
+
+        <button class="bg-blue-800 my-6 py-2 text-white hover:bg-blue-900 rounded-sm"> Registrar Fundación </button>
+    </form>
+</div>
