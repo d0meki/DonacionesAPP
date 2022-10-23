@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http'
 
 import { RegisterFundacionPageComponent } from './pages/register-fundacion-page/register-fundacion-page.component';
@@ -10,7 +12,8 @@ import { RegisterFundacionPageComponent } from './pages/register-fundacion-page/
   ],
   imports: [
     CommonModule,
-    HttpClientModule 
+    HttpClientModule,
+    ReactiveFormsModule 
   ]
 })
 export class FundacionModule { }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HelperService } from '../../services/helper.service';
-import { Countries } from '../../interfaces/country-interface';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register-fundacion-page',
@@ -8,23 +7,23 @@ import { Countries } from '../../interfaces/country-interface';
   styleUrls: ['./register-fundacion-page.component.css']
 })
 export class RegisterFundacionPageComponent implements OnInit {
-  public countriesList : Countries[];
-  public stateCountry : boolean = false;
-  constructor(private helperService : HelperService) { 
-    this.countriesList = [];
+  public customForm : FormGroup = this.formbuild.group({
+    name: ["", Validators.required ],
+    description: ["", Validators.required ],
+    business: ["", Validators.required ],
+    business2: ["", Validators.required ],
+    country: ["", Validators.required ],
+    location: ["", Validators.required ],
+    email: ["", Validators.required ],
+    phone: [0, Validators.required ]
+  });
+
+  constructor( private formbuild: FormBuilder) { 
+
   }
 
   ngOnInit(): void {
     
-    this.helperService.listCountries()
-    .subscribe( (countries : Countries[]) => { 
-      this.countriesList = countries;
-    });
-  }
-
-  setStateCountry(){
-    this.stateCountry = true;
-    console.log("hojslkfjflksdjfdslkf");
   }
 
 }
