@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { FundacionModule } from './fundacion/fundacion.module';
 import { AdministracionModule } from './administracion/administracion.module';
 import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,6 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     SharedModule,
     FundacionModule,
     AuthModule,

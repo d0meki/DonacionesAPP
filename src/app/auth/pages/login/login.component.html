@@ -1,5 +1,5 @@
 <main class="flex items-center justify-center h-screen bg-gray-100">
-  <form>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="bg-white w-96 p-6 rounded shadow-2xl">
       <div class="flex items-center justify-center mb-4">
         <img src="/assets/logohome_icon.svg" class="h-32" />
@@ -9,6 +9,7 @@
       <label class="input-group py-2 px-1">
         <span> Usuario  <i class="fa-solid fa-user"></i></span>
         <input
+        formControlName="usuario"
           type="text"
           placeholder="userinfo"
           class="input input-bordered w-full"
@@ -17,6 +18,7 @@
       <label class="input-group py-2 px-1" >
         <span>Contraseña <i class="fas fa-user-lock"></i></span>
         <input
+        formControlName="password"
           placeholder="**********"
           type="password"
           class="input input-bordered w-full"
