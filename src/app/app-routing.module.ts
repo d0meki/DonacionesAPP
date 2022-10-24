@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './auth/pages/login/login.component';
+import { RegisterComponent } from './auth/pages/register/register.component';
 import { RegisterFundacionPageComponent } from './fundacion/pages/register-fundacion-page/register-fundacion-page.component';
 import { Page404Component } from './shared/page404/page404.component';
 
@@ -11,7 +13,9 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    component: RegisterFundacionPageComponent
+    component: Page404Component,
+    loadChildren: () => import('../app/auth/auth.module')
+      .then(m => m.AuthModule)
   },
   {
     path: 'cliente',
@@ -25,10 +29,15 @@ const routes: Routes = [
     path: 'Administrador',
     component: Page404Component
   },
-  {
-    path: '**',
-    component: Page404Component
-  }
+  // {
+  //   path: '**',
+  //   redirectTo: 'error'
+  // },
+  // {
+  //   path: 'error',
+  //   component: Page404Component
+  // }
+
 ];
 
 @NgModule({
