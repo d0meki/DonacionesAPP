@@ -5,15 +5,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 
 import { RegisterFundacionPageComponent } from './pages/register-fundacion-page/register-fundacion-page.component';
+import { TextValidatorInputComponent } from './components/text-validator-input/text-validator-input.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    RegisterFundacionPageComponent
+    RegisterFundacionPageComponent,
+    TextValidatorInputComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class FundacionModule { }
