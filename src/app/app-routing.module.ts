@@ -2,6 +2,7 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
+import { PagosComponent } from './donaciones/pagos/pagos.component';
 import { RegisterFundacionPageComponent } from './fundacion/pages/register-fundacion-page/register-fundacion-page.component';
 import { Page404Component } from './shared/page404/page404.component';
 
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'fundacion',
     component: RegisterFundacionPageComponent,
+  },
+  {
+    path: 'pagos',
+    component: PagosComponent
   },
   {
     path: 'Administrador',

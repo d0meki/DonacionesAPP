@@ -20,10 +20,13 @@ export class LoginComponent implements OnInit {
     //this.usuarioService.getAllUser();
   }
   login(){
+
+    
     if (this.loginForm.valid) {
         //llamar al servicio para Loguearse
-        this.usuarioService.Authentication(this.loginForm.value);
+       // this.usuarioService.Authentication(this.loginForm.value);
         console.log("Login con Exito");
+
     } else {
       //mensaje de que no se pudo registrar por X o Y motivo
       // this.toastr.error('Suscripcion', 'Tarjeta rechazada, Revise sus datos de la tarjeta!');
