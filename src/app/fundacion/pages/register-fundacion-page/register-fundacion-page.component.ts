@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FundacionService } from '../../services/fundacion.service';
 import { FoundationResp } from '../../interfaces/fundacion-interface';
 import { HelperService } from '../../services/helper.service';
@@ -29,8 +29,8 @@ export class RegisterFundacionPageComponent implements OnInit{
   public stateSubmitForm : boolean = false;
   public notificationSuccess : boolean = false;
   public notificationError : boolean = false;
-  
-  constructor( private formbuild: FormBuilder, private fundacionService: FundacionService, private helperService : HelperService,private router : Router) { 
+
+  constructor( private formbuild: FormBuilder, private fundacionService: FundacionService, private helperService : HelperService,private router : Router) {
 
   }
   ngOnInit(): void {
@@ -46,14 +46,14 @@ export class RegisterFundacionPageComponent implements OnInit{
   }
   fieldsValidatorFoundation() : boolean | null {
     return (!this.customForm.controls['name'].errors && !this.customForm.controls['description'].errors &&
-            !this.customForm.controls['foundation_type'].errors && !this.customForm.controls['phone2'].errors && 
+            !this.customForm.controls['foundation_type'].errors && !this.customForm.controls['phone2'].errors &&
             !this.customForm.controls['country'].errors && !this.customForm.controls['location'].errors) && true;
   }
 
   fieldsValidatorRepresentative() : boolean | null {
     return (!this.customForm.controls['email'].errors && !this.customForm.controls['password'].errors) && true;
   }
-  
+
   fieldsValidatorAll(){
     return this.customForm.valid;
   }
@@ -82,7 +82,7 @@ export class RegisterFundacionPageComponent implements OnInit{
       this.notificationSuccess = false;
     }, 3000);
   }
-  
+
   setTransitionError(){
     this.notificationError = true;
     setTimeout(() => {
@@ -103,7 +103,7 @@ export class RegisterFundacionPageComponent implements OnInit{
       this.stateSubmitForm = false;
       this.setTransitionSuccess();
       this.router.navigate(['auth/login']);
-    }, err => {
+    }, (err:any) => {
       console.log(err);
       this.stateSubmitForm = false;
       this.setTransitionError();

@@ -1,0 +1,115 @@
+<div class="flex pt-16">
+  <div class="w-1/6 h-screen bg-blue">
+    <app-side-bar-fundacion></app-side-bar-fundacion>
+  </div>
+  <div class="w-5/6 bg-gray-200">
+      <p class="font-medium text-black/80 text-xl my-5 ml-10"> Solicitud de Recaudación </p>
+    <div class="bg-white mx-10 my-5 overflow-y-scroll h-screen">
+      <form class="w-2/3 mx-auto my-10 pt-10"
+        (submit)="submitProject()"
+        [formGroup]="customForm">
+        <div class="flex flex-col my-4">
+          <label for="name" class="text-sm text-black/80"> Nombre del Proyecto </label>
+          <input class="border rounded-sm border-blue-700 py-1 shadow-md px-2 font-medium text-black/80"
+            id="name"
+            type="text"
+            formControlName="name"
+          />
+          <app-text-validator-input *ngIf="fieldValidator('name')"
+            message="nombre requerido"
+          >
+          </app-text-validator-input>
+        </div>
+        <div class="flex flex-col my-4">
+          <label for="name" class="text-sm text-black/80"> Motivo de la Solicitud </label>
+          <input class="border rounded-sm border-blue-700 py-1 shadow-md px-2 font-medium text-black/80"
+            id="name"
+            type="text"
+            formControlName="reason"
+          />
+          <app-text-validator-input *ngIf="fieldValidator('reason')"
+            message="motivo requerido"
+          ></app-text-validator-input>
+        </div>
+        <div class="flex flex-col my-4">
+          <label for="name" class="text-sm text-black/80"> Descripción del Proyecto</label>
+          <textarea class="border rounded-sm border-blue-700 py-1 shadow-md px-2 font-medium text-black/80"
+            id="name"
+            type="text"
+            formControlName="description"
+          ></textarea>
+          <app-text-validator-input *ngIf="fieldValidator('description')"
+            message="motivo requerido"
+          ></app-text-validator-input>
+        </div>
+        <div class="flex justify-between my-4">
+          <div class="flex flex-col w-4/6 mr-4">
+            <label class="text-sm text-black/80"> Monto de Recaudación </label>
+            <input class="border rounded-sm border-blue-700 py-1 shadow-md px-2 font-medium text-black/80"
+              type="number"
+              formControlName="requested_amount"
+            />
+            <app-text-validator-input *ngIf="fieldValidator('requested_amount')"
+              message="monto requerido"
+            ></app-text-validator-input>
+          </div>
+          <div class="flex flex-col w-4/6 ml-4">
+            <label class="text-sm text-black/80"> Tipo de Proyecto </label>
+            <!-- <input class="border rounded-sm border-blue-700 py-1 shadow-md"
+              type="text"
+              formControlName="others"
+            /> -->
+            <select class="border border-blue-700 py-1 shadow-md w-full max-w-xs"
+              (change)="changeProjectType($event)"
+            >
+              <option disabled selected>Selecione la categoria </option>
+              <option value="Social Cultural">Social Cultural </option>
+              <option value="Tecnologia">Tecnologia </option>
+              <option value="Biologia" >Biologia </option>
+              <option value="Arte" >Arte</option>
+              <option value="Musica" >Musica</option>
+              <option value="Juegos">Juegos</option>
+            </select>
+            <app-text-validator-input *ngIf="fieldValidator('project_type')"
+              message="otro requerido"
+            ></app-text-validator-input>
+          </div>
+        </div>
+        <div class="flex justify-between my-4">
+          <div class="flex flex-col w-4/6 mr-4">
+            <label class="text-sm text-black/80"> Banco </label>
+            <input class="border rounded-sm border-blue-700 py-1 shadow-md px-2 font-medium text-black/80"
+              type="text"
+              formControlName="bank"
+            />
+            <app-text-validator-input *ngIf="fieldValidator('bank')"
+              message="banco requerido"
+            ></app-text-validator-input>
+          </div>
+          <div class="flex jus flex-col w-4/6 ml-4">
+            <label class="text-sm text-black/80"> Numero de Cuenta </label>
+            <input class="border rounded-sm border-blue-700 py-1 shadow-md px-2 font-medium text-black/80"
+              type="text"
+              formControlName="number_acount"
+            />
+            <app-text-validator-input *ngIf="fieldValidator('number_acount')"
+              message="cuenta requerida"
+            ></app-text-validator-input>
+          </div>
+        </div>
+        <div class="bg-gray-300 rounded-md">
+          <p class="text-center font-medium text-lg text-blue-700 py-3"> Cargar Imagenes de la causa</p>
+          <app-drop-and-draw-image title="Cargar Imagen" (image)="addImage($event, 0)"></app-drop-and-draw-image>
+          <app-text-validator-input *ngIf="fieldValidator('photos')"
+            message="foto requerida"
+          ></app-text-validator-input>
+          <app-drop-and-draw-image title="Cargar Imagen" (image)="addImage($event, 1)"></app-drop-and-draw-image>
+          <app-text-validator-input *ngIf="fieldValidator('photos')"
+            message="foto requerida"
+          ></app-text-validator-input>
+        </div>
+        <button type="submit" class="my-4 bg-blue py-1 w-full rounded-sm shadow-md text-white hover:bg-blue-700"> Enviar Solicitud </button>
+      </form>
+    </div>
+  </div>
+</div>

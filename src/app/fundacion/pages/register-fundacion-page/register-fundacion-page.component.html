@@ -15,7 +15,7 @@
         </div>
         <div class="flex flex-col my-2">
             <label class="text-gray-500 text-sm mb-1"
-            for="name" 
+            for="name"
             > Nombre de Fundación</label>
             <input class="border py-1 px-4 focus:bg-slate-100  border-blue-700 shadow-md rounded-sm"
                 id="name"
@@ -23,13 +23,13 @@
                 formControlName="name"
             />
             <app-text-validator-input *ngIf="fieldValidator('name')"
-                message="campo requerido" 
+                message="campo requerido"
             > </app-text-validator-input>
         </div>
         <div class="flex flex-col my-2">
             <label class="text-gray-500 text-sm mb-1"
             for="Description"
-            > Descripción de Fundación</label> 
+            > Descripción de Fundación</label>
             <textarea class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm"
                 id="description"
                 type="text"
@@ -41,7 +41,7 @@
         </div>
         <div class="flex justify-between">
             <div class="flex flex-col my-2 w-1/2 mr-5">
-                <label class="text-gray-500 text-sm mb-1" 
+                <label class="text-gray-500 text-sm mb-1"
                     for="business"
                 > Razon Social:</label>
                 <!-- <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm"
@@ -75,7 +75,7 @@
                 />
                 <!-- <select class="py-1 border border-blue-700 w-full max-w-xs overflow-y-scroll">
                     <option disabled selected >Seleccione el Pais</option>
-                    <option *ngFor="let country of listCountries"> 
+                    <option *ngFor="let country of listCountries">
                         <img [src]="country.flags.svg" class="ml-3 w-6 h-5"/>
                         {{ country.name.common }}
                     </option>
@@ -83,7 +83,7 @@
                 <app-text-validator-input *ngIf="fieldValidator('country')"
                     message="campo requerido"
                 > </app-text-validator-input>
-               
+
                 <div class="h-24 border overflow-y-scroll" *ngIf="countryState">
                     <ul class="" *ngFor="let country of listCountries border">
                        <div class="flex my-1">
@@ -98,7 +98,7 @@
         </div>
         <div class="flex justify-between">
             <div class="flex flex-col my-2 w-1/2 mr-5">
-                <label class="text-gray-500 text-sm mb-1" 
+                <label class="text-gray-500 text-sm mb-1"
                     for="phone"
                 > Telefono:</label>
                 <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-smd"
@@ -126,7 +126,7 @@
         <div class="divider"></div>
         <div class="flex justify-between">
             <div class="flex flex-col my-2 w-1/2 mr-5">
-                <label class="text-gray-500 text-sm mb-1" 
+                <label class="text-gray-500 text-sm mb-1"
                     for="email"
                 > Correo Electronico:</label>
                 <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm"
@@ -153,7 +153,7 @@
             </div>
         </div>
         <button class="bg-blue-800 my-6 py-2 text-white hover:bg-blue-900 rounded-sm"
-        > 
+        >
         Registrar Fundación </button>
         <div class="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 " *ngIf="stateSubmitForm">
             <div class="border-t-transparent border-solid animate-spin  rounded-full border-blue-400 border-8 h-20 w-20"></div>
@@ -171,6 +171,4 @@
             </div>
         </div>
     </form>
-   
 </div>
-

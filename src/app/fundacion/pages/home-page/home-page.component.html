@@ -1,0 +1,42 @@
+<div class="flex pt-16">
+  <div class="w-1/6 h-screen bg-blue">
+    <app-side-bar-fundacion></app-side-bar-fundacion>
+  </div>
+  <div class="w-5/6 bg-gray-100 m-8 h-screen overflow-y-scroll">
+    <div class="m-10">
+      <div class="flex justify-between my-6">
+        <p class="font-bold text-black/70 text-2xl "> Proyectos </p>
+        <button routerLink="/fundacion/project" class="bg-blue py-1 px-4 rounded-sm text-gray-100 shadow-md hover:bg-blue-700"> Solicitar Proyecto </button>
+      </div>
+      <div class="bg-blue py-2 px-2">
+        <p class="font-medium"> Proyectos Solicitados </p>
+      </div>
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 relative">
+        <thead
+          class="text-sm text-gray-700 uppercase bg-white border border-black/60 font-medium"
+        >
+          <tr>
+            <th scope="col" class="py-2 px-6">Nombre de Proyecto </th>
+            <th scope="col" class="py-2 px-6"> Descrición  </th>
+            <th scope="col" class="py-2 px-6"> Fecha </th>
+            <th scope="col" class="py-2 px-6"> Estado </th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-900 " *ngFor="let project of projectsList">
+          <tr class="bg-white border-b  border-gray-700 border">
+            <th
+              scope="row"
+              class="py-3 px-6 font-medium text-gray-900 whitespace-nowrap "
+            >
+              {{project.name}}
+            </th>
+            <td class="py-2 px-6"> {{project.description}} </td>
+            <td class="py-2 px-6"> {{project.publication_date}}</td>
+            <td class="py-2 px-6"> {{project.state === "0" ? "No aprobado": "Aprobado"}} </td>
+          </tr>
+        </tbody>
+        <app-spinner *ngIf="spinnerState"></app-spinner>
+      </table>
+    </div>
+  </div>
+</div>

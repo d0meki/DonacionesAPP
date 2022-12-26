@@ -1,0 +1,30 @@
+.circle {
+  clip-path: circle();
+  width: 3rem;
+  height: 3rem;
+  background-color: gray;
+}
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@media only screen and (max-width: 1024px) {
+  .cat {
+    display: none;
+  }
+  .post {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+/* @media only screen and (min-width: 1024px) {
+  .cat {
+    display: flex;
+  }
+} */
+/* @media only screen and (min-width: 600px) {
+  .cat {
+    display: none;
+  }
+} */

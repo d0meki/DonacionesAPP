@@ -1,0 +1,11 @@
+<div class="mx-auto mt-5">
+  <div class="mx-auto w-28  bg-gray-500 rounded-full">
+    <img class="rounded-full h-28" [src]="previsualizacion" width/>
+  </div>
+  <label >
+    <input type="file" class="display"
+      (change)="loadImage($event)"
+    />
+    <img class="mx-auto mt-2 hover:cursor-pointer" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAAbJJREFUOE+NlYFxwjAMRZ82YANGgE5A2KAbwAh0gsIGjMAIbJAwQWGCMkI3UE+2ktixQ+s7juATX//rS4oIoNgZn6bPgnpMCPzzGNKAkcKO//TbIqdQJAsxgvi30V0Aqx6sSJAERlFDxG0g0IMmjO6CrvpS1Fnkyh22A7ajYlMQ5TcoLWBZLSg5c7UOIXtgCSKBRFIpB5UW9AQcc6Mqvox5OoQNOpALrkem0EBg6qAOW3cuNbZT2JjWqZ4K03l2kxa0Us2ABqap/GorHkCuoM/E/Vy+G5QZJXDSUNPCqAahRYOJ0enY3i/kp0yFoxe70Vjrs8C3EvrYzofdOehZhTVKM23jilGyENSAjM8d1MD78wO8Ac+5EU/cl1ZQly8dqBnQy8xnX+hQtgJ7FZaonNJhyVrKa3oF3kc0n/Fybi+gl6xPM6MK9yvLos75ZUutgS+rk39qi/ABHIJk2LlRazcwjrbwQDmkW+oisBuXz+iMO3szl+MY81ndl0KI6Ws6QZhzKGtg+zHIT6tTgqZ49aWa7pu8ppMt1b9TCirDRX0D2hCYH7GPs83/b7Wz7TW86QzqF1oLwB03QUQ3AAAAAElFTkSuQmCC"/>
+  </label>
+</div>

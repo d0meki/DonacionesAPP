@@ -1,35 +1,50 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterFundacionPageComponent } from './fundacion/pages/register-fundacion-page/register-fundacion-page.component';
-import { Page404Component } from './shared/page404/page404.component';
-import { LoginComponent } from './auth/pages/login/login.component';
+import { AuthDonationGuard } from './auth/guards/auth-donation.guard';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { Page404Component } from './shared/components/page404/page404.component';
+import { FundacionPublicPageComponent } from './shared/pages/fundacion-public-page/fundacion-public-page.component';
+import { HomePublicPageComponent } from './shared/pages/home-public-page/home-public-page.component';
+import { ProjectPublicPageComponent } from './shared/pages/project-public-page/project-public-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: Page404Component,
-    pathMatch: 'full'
+    component: HomePublicPageComponent
   },
   {
-    path: 'auth',
-    component: Page404Component
+    path: ':name',
+    component: FundacionPublicPageComponent
   },
   {
-    path: 'cliente',
-    component: Page404Component
+    path: 'project/:id',
+    component: ProjectPublicPageComponent
   },
   {
     path: 'fundacion',
-    component: RegisterFundacionPageComponent,
+    loadChildren: () => import('./fundacion/fundacion.module').then( m => m.FundacionModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
   },
   {
-    path: 'Administrador',
-    component: Page404Component
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule)
   },
-  // {
-  //   path: '**',
-  //   component: Page404Component
-  // }
+  {
+    path: 'donador',
+    loadChildren: () => import('./donaciones/donaciones.module').then( m => m.DonacionesModule),
+    canLoad: [AuthDonationGuard],
+    canActivate: [AuthDonationGuard]
+  },
+  {
+    path: '404',
+    component: Page404Component,
+  },
+  {
+    path: '**',
+    redirectTo: '404'
+  }
+
 ];
 
 @NgModule({
