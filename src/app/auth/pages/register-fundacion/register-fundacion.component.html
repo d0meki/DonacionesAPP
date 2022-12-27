@@ -1,4 +1,4 @@
-<div class="h-full flex justify-evenly">
+<div class="h-full flex justify-evenly" #opacity>
   <ul class="steps steps-vertical  font-medium -z-10">
       <li class="step step-primary">Registrar Fundación</li>
       <li class="step" *ngIf="!fieldsValidatorFoundation()">Registrar Respresentante</li>
@@ -155,9 +155,10 @@
       <button class="bg-blue-800 my-6 py-2 text-white hover:bg-blue-900 rounded-sm"
       >
       Registrar Fundación </button>
-      <div class="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 " *ngIf="stateSubmitForm">
+      <!-- <div class="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 " *ngIf="stateSubmitForm">
           <div class="border-t-transparent border-solid animate-spin  rounded-full border-blue-400 border-8 h-20 w-20"></div>
-      </div>
+      </div> -->
+
       <div class="w-1/3 absolute alert alert-success shadow-lg" *ngIf="notificationSuccess">
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -173,4 +174,5 @@
   </form>
 
 </div>
+<app-progress *ngIf="progressState"></app-progress>
 

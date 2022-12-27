@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -12,6 +12,9 @@ import { FundacionService } from '../../services/fundacion.service';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
+  @ViewChild('opacity') public divarelem! : ElementRef;
+  public progressState : boolean = false;
+
   private file : any[] = [];
   public fundation: FundacionGet | null;
   public fundation_id: number = 0;
@@ -29,7 +32,7 @@ export class ProfilePageComponent implements OnInit {
     'foto': ['', Validators.required]
 
   });
-  constructor(private formBuild: FormBuilder, private authService: AuthService, private fundacionService: FundacionService) {
+  constructor(private formBuild: FormBuilder, private authService: AuthService, private fundacionService: FundacionService, private render : Renderer2) {
     this.fundation = null;
   }
 
@@ -81,19 +84,31 @@ export class ProfilePageComponent implements OnInit {
     if(this.customForm.invalid){
       this.customForm.markAllAsTouched();
     } else {
-      this.spinnerUpdate = true;
+      // this.spinnerUpdate = true;
+      this.progressState = true;
+      this.progress();
       if(this.file.length > 0 ){
         this.uploadImage();
       } else {
         this.fundacionService.updateFoundation(this.fundation_id, this.customForm.value)
         .subscribe( res => {
           console.log(res);
-          this.spinnerUpdate = false;
+          // this.spinnerUpdate = false;
+          this.progressState = false;
+          this.progress();
         })
       }
 
 
     }
+  }
+
+  progress(){
+    const div = this.divarelem.nativeElement;
+    if(this.progressState)
+    this.render.setStyle(div, 'opacity', '0.5');
+    else
+      this.render.setStyle(div, 'opacity','1');
   }
 
 }

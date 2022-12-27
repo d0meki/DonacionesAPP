@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
@@ -10,9 +10,11 @@ import { FundacionService } from '../../services/fundacion.service';
   styleUrls: ['./project-page.component.css']
 })
 export class ProjectPageComponent implements OnInit {
+  @ViewChild('opacity') public divarelem! : ElementRef;
+
   private files : any[] = [];
   private foundation_id : number = 0;
-
+  public progressState : boolean = false;
   public customForm : FormGroup = this.formBuilder.group({
     'name': ['', [Validators.required, ]],
     'reason': ['', [Validators.required, ]],
@@ -26,7 +28,7 @@ export class ProjectPageComponent implements OnInit {
     "publication_date": ["2022-08-12", [Validators.required]],
     'state': [false]
   });
-  constructor(private formBuilder : FormBuilder, private fundacionService : FundacionService, private authService : AuthService, private router : Router) { }
+  constructor(private formBuilder : FormBuilder, private fundacionService : FundacionService, private authService : AuthService, private router : Router, private render : Renderer2) { }
 
   ngOnInit(): void {
     const user = this.authService.user;
@@ -43,6 +45,8 @@ export class ProjectPageComponent implements OnInit {
     if(this.customForm.invalid){
       this.customForm.markAllAsTouched();
     } else {
+      this.progressState = true;
+      this.progress();
       let array : string[] = [];
       this.files.forEach( (image: any, index: number) => {
         this.uploadImage(index, array);
@@ -52,6 +56,7 @@ export class ProjectPageComponent implements OnInit {
         .subscribe( res => {
           console.log(res);
           console.log(this.customForm.value)
+          this.progressState = false;
           this.router.navigate(['fundacion/home'])
         })
       }, 2000);
@@ -75,5 +80,13 @@ export class ProjectPageComponent implements OnInit {
   }
   changeProjectType(event: any){
     this.customForm.patchValue({project_type : event.target.value})
+  }
+  //progress
+  progress(){
+    const div = this.divarelem.nativeElement;
+    if(this.progressState)
+    this.render.setStyle(div, 'opacity', '0.5');
+    else
+      this.render.setStyle(div, 'opacity','1');
   }
 }

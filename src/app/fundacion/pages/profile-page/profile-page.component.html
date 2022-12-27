@@ -1,7 +1,7 @@
 <div class="pt-16 h-screen bg-gray-200" *ngIf="spinnerState">
 
 </div>
-<div class="flex pt-16 bg-gray-200" *ngIf="!spinnerState">
+<div class="flex pt-16 bg-gray-200" *ngIf="!spinnerState" #opacity>
   <div class="w-1/6 h-screen bg-blue">
     <app-side-bar-profile-fundacion
       [previsualizacion]="customForm.controls['foto'].value"
@@ -109,5 +109,6 @@
     </form>
   </div>
 </div>
-<app-spinner *ngIf="spinnerState || spinnerUpdate"></app-spinner>
+<!-- <app-spinner *ngIf="spinnerState || spinnerUpdate"></app-spinner> -->
+<app-progress *ngIf="spinnerState || progressState"></app-progress>
 

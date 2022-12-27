@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TextValidatorComponent } from './components/text-validator/text-validator.component';
 import { CookieService } from 'ngx-cookie-service';
 import { RegisterFundacionComponent } from './pages/register-fundacion/register-fundacion.component';
+import { ProgressComponent } from './components/progress/progress.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { RegisterFundacionComponent } from './pages/register-fundacion/register-
     LoginComponent,
     RegisterComponent,
     TextValidatorComponent,
-    RegisterFundacionComponent
+    RegisterFundacionComponent,
+    ProgressComponent
   ],
   imports: [
     CommonModule,

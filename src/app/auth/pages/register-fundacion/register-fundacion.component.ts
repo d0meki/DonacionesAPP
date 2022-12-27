@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { FoundationResp } from '../../interfaces/fundacion-interface';
@@ -12,6 +12,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./register-fundacion.component.css']
 })
 export class RegisterFundacionComponent implements OnInit {
+  @ViewChild('opacity') public divarelem! : ElementRef;
+
+  public progressState : boolean = false;
+
+
   public customForm : FormGroup = this.formbuild.group({
     name: ["", Validators.required ],
     description: ["", Validators.required ],
@@ -33,7 +38,7 @@ export class RegisterFundacionComponent implements OnInit {
   public notificationSuccess : boolean = false;
   public notificationError : boolean = false;
 
-  constructor( private formbuild: FormBuilder, private authService: AuthService, private helperService : HelperService,private router : Router) {
+  constructor( private formbuild: FormBuilder, private authService: AuthService, private helperService : HelperService,private router : Router, private render : Renderer2) {
 
   }
   ngOnInit(): void {
@@ -103,18 +108,28 @@ export class RegisterFundacionComponent implements OnInit {
     }
     //this.customForm.reset();
     this.stateSubmitForm = true;
+    this.progressState = true;
+      this.progress();
     this.authService.createFoundation(this.customForm.value)
     .subscribe( (foundation: FoundationResp) => {
       console.log(foundation);
+      this.progress();
       this.stateSubmitForm = false;
       this.setTransitionSuccess();
       this.router.navigate(['auth/login']);
     }, (err:any) => {
       console.log(err);
+      this.progress();
       this.stateSubmitForm = false;
       this.setTransitionError();
     });
   }
 
-
+  progress(){
+    const div = this.divarelem.nativeElement;
+    if(this.progressState)
+    this.render.setStyle(div, 'opacity', '0.5');
+    else
+      this.render.setStyle(div, 'opacity','1');
+  }
 }

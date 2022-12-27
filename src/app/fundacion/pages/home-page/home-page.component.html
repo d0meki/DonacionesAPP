@@ -2,8 +2,8 @@
   <div class="w-1/6 h-screen bg-blue">
     <app-side-bar-fundacion></app-side-bar-fundacion>
   </div>
-  <div class="w-5/6 bg-gray-100 m-8 h-screen overflow-y-scroll">
-    <div class="m-10">
+  <div class="w-5/6 bg-gray-100 m-8 h-screen overflow-y-scroll relative">
+    <div class="m-10" #opacity>
       <div class="flex justify-between my-6">
         <p class="font-bold text-black/70 text-2xl "> Proyectos </p>
         <button routerLink="/fundacion/project" class="bg-blue py-1 px-4 rounded-sm text-gray-100 shadow-md hover:bg-blue-700"> Solicitar Proyecto </button>
@@ -35,8 +35,9 @@
             <td class="py-2 px-6"> {{project.state === "0" ? "No aprobado": "Aprobado"}} </td>
           </tr>
         </tbody>
-        <app-spinner *ngIf="spinnerState"></app-spinner>
+        <!-- <app-spinner *ngIf="spinnerState"></app-spinner> -->
       </table>
+      <app-progress *ngIf="spinnerState"></app-progress>
     </div>
   </div>
 </div>
