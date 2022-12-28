@@ -4,8 +4,8 @@
   </div>
   <div class="w-5/6 bg-gray-200">
       <p class="font-medium text-black/80 text-xl my-5 ml-10"> Solicitud de Recaudación </p>
-    <div class="bg-white mx-10 my-5 overflow-y-scroll h-screen">
-      <form class="w-2/3 mx-auto my-10 pt-10"
+    <div class="bg-white mx-10 my-5 overflow-y-scroll h-screen" #opacity>
+      <form class="w-2/3 mx-auto my-10 pt-10 relative"
         (submit)="submitProject()"
         [formGroup]="customForm">
         <div class="flex flex-col my-4">
@@ -109,6 +109,7 @@
           ></app-text-validator-input>
         </div>
         <button type="submit" class="my-4 bg-blue py-1 w-full rounded-sm shadow-md text-white hover:bg-blue-700"> Enviar Solicitud </button>
+        <app-progress *ngIf="progressState"></app-progress>
       </form>
     </div>
   </div>

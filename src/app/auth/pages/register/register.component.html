@@ -1,4 +1,4 @@
-<main class="flex items-center justify-center h-screen bg-gray-100">
+<main class="flex items-center justify-center h-screen bg-gray-100" #opacity>
   <form [formGroup]="registerForm"
     (submit)="submitRegister()"
   >
@@ -49,3 +49,4 @@
     </div>
   </form>
 </main>
+<app-progress *ngIf="progressState"></app-progress>

@@ -37,6 +37,10 @@ const routes: Routes = [
     canActivate: [AuthDonationGuard]
   },
   {
+    path: 'payments',
+    loadChildren: ()=> import('./payments/payments.module').then( m => m.PaymentsModule)
+  },
+  {
     path: '404',
     component: Page404Component,
   },

@@ -15,6 +15,7 @@ import { DropAndDrawImageComponent } from './components/drop-and-draw-image/drop
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { SideBarProfileFundacionComponent } from './components/side-bar-profile-fundacion/side-bar-profile-fundacion.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ProgressComponent } from './components/progress/progress.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     DropAndDrawImageComponent,
     ProfilePageComponent,
     SideBarProfileFundacionComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ProgressComponent
   ],
   imports: [
     CommonModule,
