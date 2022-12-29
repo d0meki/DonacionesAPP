@@ -1,0 +1,46 @@
+<div class="py-16 bg-gray-200">
+  <div class="mx-10 bg-white h-screen">
+    <div class="pb-10 relative">
+      <div class="h-56 bg-blue-400 rounded-md"></div>
+      <div
+        class="circle_profile absolute bottom-0 left-10 text-center flex flex-col justify-center "
+      >
+        <img [src]="foundation?.person?.foto" class="circle_profile" *ngIf="foundation?.person?.foto"/>
+        <!-- <p class="font-bold">foto</p> -->
+      </div>
+    </div>
+    <div class="mt-5 ml-5">
+      <div class="">
+        <p class="font-bold text-black/80">{{foundation?.person?.name}}</p>
+      </div>
+      <div class="my-4 w-1/2">
+        <p class="text-sm">
+          {{foundation?.description}}
+        </p>
+      </div>
+      <div class="flex justify-evenly  py-1 text-black/80 font-medium">
+        <div> <button> Información </button> <p class="pb-1 mt-1 bg-blue rounded-sm"></p> </div>
+        <div> <button> Proyectos </button> <p class="pb-1 mt-1  bg-blue rounded-sm"></p> </div>
+        <div> <button> Fotos </button> <p class="pb-1 mt-1 bg-blue rounded-sm"></p> </div>
+      </div>
+      <div class="mt-10">
+        <div class="flex my-3">
+          <p class="mr-2 font-medium"> País:</p>
+          <p> {{foundation?.country}} </p>
+        </div>
+        <div class="flex my-3">
+          <p class="mr-2 font-medium"> Ubicación:</p>
+          <p>  {{foundation?.location}}  </p>
+        </div>
+        <div class="flex my-3">
+          <p class="mr-2 font-medium"> Correo:</p>
+          <p>  {{foundation?.person?.user?.email}}  </p>
+        </div>
+        <div class="flex my-3">
+          <p class="mr-2 font-medium"> Número de Telefono:</p>
+          <p>  {{foundation?.person?.phone}}  </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

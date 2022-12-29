@@ -1,0 +1,49 @@
+<div class="h-screen bg-blue relative" #sidebarele>
+  <div
+    class="absolute right-3 top-3 hover:bg-white cursor-pointer"
+    (click)="toggleSidebar()"
+  >
+    <img [src]="icon" alt="icon" />
+  </div>
+  <div *ngIf="toggle">
+    <p class="font-bold text-black/80 text-2xl pt-4 text-center">Donador</p>
+    <app-profile
+    previsualizacion={{previsualizacion}}
+    ></app-profile>
+    <ul class="px-6 py-2 font-medium">
+      <li
+        class="hover:bg-gray-400 my-3 py-1 rounded-sm cursor-pointer flex"
+        routerLink="/donador/perfil"
+      >
+        <img
+          alt="icon"
+          src="../../../../assets/icons/🦆 icon _person_.svg"
+          class="mx-2"
+        />
+        Perfil
+      </li>
+      <li
+        class="hover:bg-gray-400 my-3 py-1 rounded-sm cursor-pointer flex"
+        routerLink="/donador/home"
+      >
+        <img
+          alt="icon"
+          src="../../../../assets/icons/🦆 icon _folder add_.svg"
+          class="mx-2"
+        />
+        Historial
+      </li>
+      <li
+        class="hover:bg-gray-400 my-3 py-1 rounded-sm cursor-pointer flex"
+        routerLink="/donador/history"
+      >
+        <img
+          alt="icon"
+          src="../../../../assets/icons/🦆 icon _folder add_.svg"
+          class="mx-2"
+        />
+        Metodos de Pago
+      </li>
+    </ul>
+  </div>
+</div>

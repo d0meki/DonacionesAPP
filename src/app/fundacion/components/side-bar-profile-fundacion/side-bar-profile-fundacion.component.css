@@ -1,0 +1,12 @@
+.circle_profile {
+  margin: 0 auto;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  /* clip-path: circle(); */
+
+}
+
+.file_profile {
+  display: none;
+}

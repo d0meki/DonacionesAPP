@@ -1,0 +1,114 @@
+<div class="pt-16 h-screen bg-gray-200" *ngIf="spinnerState">
+
+</div>
+<div class="flex pt-16 bg-gray-200" *ngIf="!spinnerState" #opacity>
+  <div class="w-1/6 h-screen bg-blue">
+    <app-side-bar-profile-fundacion
+      [previsualizacion]="customForm.controls['foto'].value"
+      (image)="changeImage($event)"
+    ></app-side-bar-profile-fundacion>
+  </div>
+  <div class=" w-2/3 mx-auto mt-5">
+    <p class="my-5 font-medium text-lg text-black/80"> Información del Perfil </p>
+    <form class="bg-white py-4" [formGroup]="customForm"
+      (submit)="submitForm()"
+    >
+      <div class="flex flex-col mx-10 my-4">
+        <label class="text-sm text-black/80 my-1"> Nombre de la Fundación </label>
+        <input class="border border-blue-700 py-1 rounded-sm shadow-md px-2 font-medium text-black/80"
+          type="text"
+          formControlName="name"
+        >
+        <app-text-validator-input *ngIf="fieldValidator('name')"
+          message="nombre requerido"
+        >
+        </app-text-validator-input>
+      </div>
+      <div class="flex flex-col mx-10 my-4">
+        <label class="text-sm text-black/80 my-1"> Descripción de la Fundación </label>
+        <textarea class="border border-blue-700 py-1 rounded-sm shadow-md px-2 font-medium text-black/80"
+          type="text"
+          formControlName="description"
+        ></textarea>
+        <app-text-validator-input *ngIf="fieldValidator('description')"
+          message="descripción requerida"
+        >
+        </app-text-validator-input>
+      </div>
+      <div class="flex mx-10 my-4">
+        <div class="flex flex-col w-4/6 mr-4">
+          <label class="text-sm text-black/80 my-1"> Razón Social </label>
+          <input class="border border-blue-700 py-1 rounded-sm shadow-md px-2 font-medium text-black/80"
+            type="text"
+            formControlName="foundation_type"
+          >
+          <app-text-validator-input *ngIf="fieldValidator('foundation_type')"
+            message="razón social requerido"
+          >
+          </app-text-validator-input>
+        </div>
+        <div class="flex flex-col w-4/6 ml-4">
+          <label class="text-sm text-black/80 my-1"> País </label>
+          <input class="border border-blue-700 py-1 rounded-sm shadow-md px-2 font-medium text-black/80"
+            type="text"
+            formControlName="country"
+          >
+          <app-text-validator-input *ngIf="fieldValidator('country')"
+            message="país requerido"
+          >
+          </app-text-validator-input>
+        </div>
+      </div>
+      <div class="flex mx-10 my-4">
+        <div class="flex flex-col w-4/6 mr-4">
+          <label class="text-sm text-black/80 my-1"> Ubicación </label>
+          <input class="border border-blue-700 py-1 rounded-sm shadow-md px-2 font-medium text-black/80"
+            type="text"
+            formControlName="location"
+          >
+          <app-text-validator-input *ngIf="fieldValidator('location')"
+            message="ubicación requerido"
+          >
+          </app-text-validator-input>
+        </div>
+        <div class="flex flex-col w-4/6 ml-4">
+          <label class="text-sm text-black/80 my-1"> Número de Telefono </label>
+          <input class="border border-blue-700 py-1 rounded-sm shadow-md px-2 font-medium text-black/80"
+            type="number"
+            formControlName="phone"
+          >
+          <app-text-validator-input *ngIf="fieldValidator('phone')"
+            message="telefono requerido"
+          >
+          </app-text-validator-input>
+        </div>
+      </div>
+      <div class="flex mx-10 my-4">
+        <div class="flex flex-col w-4/6 mr-4">
+          <label class="text-sm text-black/80 my-1"> Correo </label>
+          <input class="border border-blue-700 py-1 rounded-sm shadow-md px-2 font-medium text-black/80"
+            type="email"
+            formControlName="email"
+          >
+          <app-text-validator-input *ngIf="fieldValidator('email')"
+            message="correo requerido"
+          >
+          </app-text-validator-input>
+        </div>
+        <div class="flex flex-col w-4/6 ml-4">
+          <label class="text-sm text-black/80 my-1"> Contraseña </label>
+          <input class="border border-blue-700 py-1 rounded-sm shadow-md px-2 font-medium text-black/80"
+          type="text"
+          [disabled]="true"
+          >
+        </div>
+      </div>
+      <div class="mx-10 mb-10">
+        <button type="submit" class="bg-blue py-2 rounded-sm w-full text-white hover:bg-blue-600"> Actualizar Información </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- <app-spinner *ngIf="spinnerState || spinnerUpdate"></app-spinner> -->
+<app-progress *ngIf="spinnerState || progressState"></app-progress>
+

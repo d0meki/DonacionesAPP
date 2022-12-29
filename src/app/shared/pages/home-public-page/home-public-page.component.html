@@ -1,0 +1,22 @@
+<div class="flex pt-16 bg-gray-300">
+  <app-categories class="w-96 h-screen cat"></app-categories>
+  <div class="w-7/12 mx-4 overflow-y-scroll h-screen post">
+    <div *ngFor="let project of projectsList">
+      <app-card-project
+        title={{project.foundation.person.name}}
+        project={{project.name}}
+        description={{project.description}}
+        profileImage={{project.foundation.person.foto}}
+        image1={{project.photos[0].foto}}
+        image2={{getFoto2(project)}}
+        goTo="{{project.id}}"
+        goTo2="{{project.foundation_id}}"
+      >
+      </app-card-project>
+    </div>
+
+  </div>
+  <div>
+
+  </div>
+</div>

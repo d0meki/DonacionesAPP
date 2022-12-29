@@ -1,57 +1,58 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/pages/login/login.component';
-import { RegisterComponent } from './auth/pages/register/register.component';
+import { AuthDonationGuard } from './auth/guards/auth-donation.guard';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { Page404Component } from './shared/components/page404/page404.component';
+import { FundacionPublicPageComponent } from './shared/pages/fundacion-public-page/fundacion-public-page.component';
+import { HomePublicPageComponent } from './shared/pages/home-public-page/home-public-page.component';
+import { ProjectPublicPageComponent } from './shared/pages/project-public-page/project-public-page.component';
 import { PagosComponent } from './donaciones/pagos/pagos.component';
-import { PaypalComponent } from './donaciones/paypal/paypal.component';
-import { RegisterFundacionPageComponent } from './fundacion/pages/register-fundacion-page/register-fundacion-page.component';
-import { MenuComponent } from './shared/menu/menu.component';
-import { Page404Component } from './shared/page404/page404.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: HomePublicPageComponent
+  // },
   {
     path: '',
-    component: Page404Component,
-    pathMatch: 'full'
-  },
-  {
-    path: 'auth',
-    component: Page404Component,
-    loadChildren: () => import('../app/auth/auth.module')
-      .then(m => m.AuthModule)
-  },
-  {
-    path: 'cliente',
-    component: Page404Component
-  },
-  {
-    path: 'fundacion',
-    component: RegisterFundacionPageComponent,
-  },
-  {
-    path: 'pagos',
     component: PagosComponent
   },
   {
-    path: 'paypal',
-    component: PaypalComponent
+    path: ':name',
+    component: FundacionPublicPageComponent
   },
   {
-    path: 'Administrador',
-    component: Page404Component
+    path: 'project/:id',
+    component: ProjectPublicPageComponent
   },
   {
-    path: 'menu',
-    component: MenuComponent
+    path: 'fundacion',
+    loadChildren: () => import('./fundacion/fundacion.module').then( m => m.FundacionModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
   },
-  // {
-  //   path: '**',
-  //   redirectTo: 'error'
-  // },
-  // {
-  //   path: 'error',
-  //   component: Page404Component
-  // }
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule)
+  },
+  {
+    path: 'donador',
+    loadChildren: () => import('./donaciones/donaciones.module').then( m => m.DonacionesModule),
+    canLoad: [AuthDonationGuard],
+    canActivate: [AuthDonationGuard]
+  },
+  {
+    path: 'payments',
+    loadChildren: ()=> import('./payments/payments.module').then( m => m.PaymentsModule)
+  },
+  {
+    path: '404',
+    component: Page404Component,
+  },
+  {
+    path: '**',
+    redirectTo: '404'
+  }
 
 ];
 

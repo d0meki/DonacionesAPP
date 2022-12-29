@@ -1,46 +1,45 @@
-<main class="flex items-center justify-center h-screen bg-gray-100">
-  <form   [formGroup]="registerForm" (ngSubmit)="registrarse()">
+<main class="flex items-center justify-center h-screen bg-gray-100" #opacity>
+  <form [formGroup]="registerForm"
+    (submit)="submitRegister()"
+  >
     <div class="bg-white w-96 p-6 rounded shadow-2xl">
       <div class="flex items-center justify-center mb-4">
-        <img src="/assets/logohome_icon.svg" class="h-32" />
+        <img src="/assets/logohome_icon.svg" class="h-20" />
       </div>
-
-      <label class="input-group py-2 px-1">
-        <span> Usuario <i class="fa-solid fa-user"></i></span>
-        <input
-          formControlName="name"
+      <label class="input-group py-2 px-1 flex flex-col">
+        <!-- <span> Usuario <i class="fa-solid fa-user"></i></span> -->
+        <input class="input input-bordered w-full"
           type="text"
-          placeholder="userinfo"
-          class="input input-bordered w-full"
+          placeholder="nombre"
+          formControlName="name"
         />
+        <app-text-validator *ngIf="fieldValidator('name')"
+          message="nombre requrerido"
+        > </app-text-validator>
       </label>
+      <label class="input-group py-2 px-1 flex flex-col">
+        <!-- <span> Correo <i class="fa-regular fa-envelope"></i></span> -->
 
-      <label class="input-group py-2 px-1">
-        <span> Correo <i class="fa-regular fa-envelope"></i></span>
-
-        <input
-        formControlName="email"
+        <input class="input input-bordered w-full"
           type="email"
-          placeholder="info@site.com"
-          class="input input-bordered w-full"
+          placeholder="correo"
+          formControlName="email"
         />
+        <app-text-validator *ngIf="fieldValidator('email')"
+          message="correo requrerido"
+        > </app-text-validator>
       </label>
-      <label class="input-group py-2 px-1">
-        <span>Contraseña <i class="fas fa-user-lock"></i></span>
-        <input
-          formControlName="password" 
-          placeholder="**********"
+      <label class="input-group py-2 px-1 flex flex-col">
+        <!-- <span>Contraseña <i class="fas fa-user-lock"></i></span> -->
+        <input class="input input-bordered w-full"
+          placeholder="contraseña"
           type="password"
-          class="input input-bordered w-full"
+          formControlName="password"
         />
+        <app-text-validator *ngIf="fieldValidator('password')"
+          message="contraseña requrerida"
+        > </app-text-validator>
       </label>
-      <!-- <label class="text-gray-700">Password</label>
-        <input
-          type="password"
-          class="w-full py-2 bg-gray-50 text-gray-500 px-1 outline-none mb-4"
-        /> -->
-      <!-- <input type="checkbox" id="remember" class="mb-4" />
-      <label for="remember" class="text-gray-700">Remember me</label> -->
       <button
         type="submit"
         class="bg-blue-500 mt-6 mb-6 w-full text-gray-100 py-2 rounded hover:bg-blue-600 transition-colors"
@@ -50,3 +49,4 @@
     </div>
   </form>
 </main>
+<app-progress *ngIf="progressState"></app-progress>

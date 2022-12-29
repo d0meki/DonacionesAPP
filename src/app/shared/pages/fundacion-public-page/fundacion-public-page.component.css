@@ -1,0 +1,6 @@
+.circle_profile {
+  clip-path: circle();
+  width: 10rem;
+  height: 10rem;
+  background-color: rgb(189, 189, 189);
+}

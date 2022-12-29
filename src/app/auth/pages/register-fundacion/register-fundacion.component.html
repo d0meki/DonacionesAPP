@@ -1,0 +1,178 @@
+<div class="h-full flex justify-evenly" #opacity>
+  <ul class="steps steps-vertical  font-medium -z-10">
+      <li class="step step-primary">Registrar Fundación</li>
+      <li class="step" *ngIf="!fieldsValidatorFoundation()">Registrar Respresentante</li>
+      <li class="step step-primary" *ngIf="fieldsValidatorFoundation()">Registrar Respresentante</li>
+      <li class="step" *ngIf="!fieldsValidatorRepresentative()">Completado</li>
+      <li class="step step-primary" *ngIf="fieldsValidatorRepresentative()">Completado</li>
+    </ul>
+  <form class="w-1/2 flex flex-col border my-20 py-5 px-16 bg-white rounded-md"
+      (submit)="formSubmit()"
+      [formGroup]="customForm"
+  >
+      <div class="my-3 mb-6 text-center font-bold text-lg text-blue-800 ">
+          <p> Registro de Fundacion</p>
+      </div>
+      <div class="flex flex-col my-2">
+          <label class="text-gray-500 text-sm mb-1"
+          for="name"
+          > Nombre de Fundación</label>
+          <input class="border py-1 px-4 focus:bg-slate-100  border-blue-700 shadow-md rounded-sm"
+              id="name"
+              type="text"
+              formControlName="name"
+          />
+          <app-text-validator *ngIf="fieldValidator('name')"
+              message="campo requerido"
+          > </app-text-validator>
+      </div>
+      <div class="flex flex-col my-2">
+          <label class="text-gray-500 text-sm mb-1"
+          for="Description"
+          > Descripción de Fundación</label>
+          <textarea class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm"
+              id="description"
+              type="text"
+              formControlName="description"
+          ></textarea>
+          <app-text-validator *ngIf="fieldValidator('description')"
+              message="campo requerido"
+          > </app-text-validator>
+      </div>
+      <div class="flex justify-between">
+          <div class="flex flex-col my-2 w-1/2 mr-5">
+              <label class="text-gray-500 text-sm mb-1"
+                  for="business"
+              > Razon Social:</label>
+              <!-- <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm"
+                  id="business"
+                  type="text"
+                  formControlName="foundation_type"
+                  (click)="setStateSocialReason()"
+              /> -->
+              <select class="py-1 border border-blue-700 w-full max-w-xs"
+                  formControlName="foundation_type"
+                  (change)="setValueSocialReason($event)"
+              >
+                  <option disabled selected >Seleccione la Sociedad</option>
+                  <option [ngValue]="'SA'">S.A.</option>
+                  <option [ngValue]="'SRL'">S.R.L.</option>
+                  <option [ngValue]="'SH'">S.H</option>
+              </select>
+              <app-text-validator *ngIf="fieldValidator('foundation_type')"
+                  message="campo requerido"
+              > </app-text-validator>
+          </div>
+          <div class="flex flex-col my-2 w-1/2 ml-5">
+              <label class="text-gray-500 text-sm mb-1"
+                  for="country"
+              > Pais:</label>
+              <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm"
+                  id="country"
+                  type="text"
+                  formControlName="country"
+                  (click)="setStateCountry()"
+              />
+              <!-- <select class="py-1 border border-blue-700 w-full max-w-xs overflow-y-scroll">
+                  <option disabled selected >Seleccione el Pais</option>
+                  <option *ngFor="let country of listCountries">
+                      <img [src]="country.flags.svg" class="ml-3 w-6 h-5"/>
+                      {{ country.name.common }}
+                  </option>
+              </select> -->
+              <app-text-validator *ngIf="fieldValidator('country')"
+                  message="campo requerido"
+              > </app-text-validator>
+
+              <div class="h-24 border overflow-y-scroll" *ngIf="countryState">
+                  <ul class="" *ngFor="let country of listCountries border">
+                     <div class="flex my-1">
+                          <img [src]="country.flags.svg" class="ml-3 w-6 h-5"/>
+                          <li class="text-sm pl-4 text-gray-500 cursor-pointer hover:bg-gray-500 hover:text-white w-full"
+                              (click)="setValueCountry(country)"
+                          > {{ country.name.common }}</li>
+                     </div>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="flex justify-between">
+          <div class="flex flex-col my-2 w-1/2 mr-5">
+              <label class="text-gray-500 text-sm mb-1"
+                  for="phone"
+              > Telefono:</label>
+              <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-smd"
+                  id="phone"
+                  formControlName="phone2"
+              />
+          <app-text-validator *ngIf="fieldValidator('phone2')"
+              message="campo requerido"
+          > </app-text-validator>
+          </div>
+          <div class="flex flex-col my-2 w-1/2 ml-5">
+              <label class="text-gray-500 text-sm mb-1"
+              for="location"
+              > Ubicación:</label>
+              <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm"
+                  id="location"
+                  type="text"
+                  formControlName="location"
+              />
+              <app-text-validator *ngIf="fieldValidator('location')"
+                  message="campo requerido"
+              > </app-text-validator>
+          </div>
+      </div>
+      <div class="divider"></div>
+      <div class="flex justify-between">
+          <div class="flex flex-col my-2 w-1/2 mr-5">
+              <label class="text-gray-500 text-sm mb-1"
+                  for="email"
+              > Correo Electronico:</label>
+              <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-sm"
+                  id="email"
+                  type="text"
+                  formControlName="email"
+              />
+              <app-text-validator *ngIf="fieldValidator('email')"
+                  message="campo requerido"
+              > </app-text-validator>
+          </div>
+          <div class="flex flex-col my-2 w-1/2 ml-5">
+              <label class="text-gray-500 text-sm mb-1"
+              for="password"
+              > Contraseña:</label>
+              <input class="border py-1 px-4 focus:bg-slate-100 border-blue-700 shadow-md rounded-smd"
+                  id="password"
+                  type="password"
+                  formControlName="password"
+              />
+              <app-text-validator *ngIf="fieldValidator('password')"
+                  message="campo requerido"
+              > </app-text-validator>
+          </div>
+      </div>
+      <button class="bg-blue-800 my-6 py-2 text-white hover:bg-blue-900 rounded-sm"
+      >
+      Registrar Fundación </button>
+      <!-- <div class="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 " *ngIf="stateSubmitForm">
+          <div class="border-t-transparent border-solid animate-spin  rounded-full border-blue-400 border-8 h-20 w-20"></div>
+      </div> -->
+
+      <div class="w-1/3 absolute alert alert-success shadow-lg" *ngIf="notificationSuccess">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>El registro se realizo con exito</span>
+          </div>
+      </div>
+      <div class="w-1/3 absolute alert alert-warning shadow-lg" *ngIf="notificationError">
+          <div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+              <span>El registro no se realizo con exito </span>
+          </div>
+      </div>
+  </form>
+
+</div>
+<app-progress *ngIf="progressState"></app-progress>
+
