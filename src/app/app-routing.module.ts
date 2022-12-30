@@ -9,14 +9,14 @@ import { ProjectPublicPageComponent } from './shared/pages/project-public-page/p
 import { PagosComponent } from './donaciones/pagos/pagos.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: HomePublicPageComponent
-  // },
   {
     path: '',
-    component: PagosComponent
+    component: HomePublicPageComponent
   },
+  // {
+  //   path: '',
+  //   component: PagosComponent
+  // },
   {
     path: ':name',
     component: FundacionPublicPageComponent

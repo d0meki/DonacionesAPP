@@ -6,15 +6,17 @@
         <label class="text-sm"> Monto a Donar</label>
         <input class="py-1 px-2 border-2 border-black/60 text-black/80 rounded-sm amount"
           type="number"
+          [(ngModel)]="pago.monto"
         />
       </div>
       <div class="border">
         <!-- <p class="py-1 px-2 text-black/80"> Seleccionar Moneda </p> -->
-        <select class="select w-full max-w-xs">
+        <select class="select w-full max-w-xs" [(ngModel)]="pago.codigo_moneda" >
           <option disabled selected>Seleccionar Moneda</option>
-          <option>Dolar</option>
-          <option>Euro</option>
-          <option>Bolivianos</option>
+          
+          <option *ngFor="let item of moneda" [value]="item.codigo" > {{ item.name}}</option>
+          <!-- <option>Euro</option>
+          <option>Bolivianos</option> -->
           <!-- <option>Lisa</option>
           <option>Maggie</option> -->
         </select>
@@ -28,6 +30,7 @@
       <input type="radio" class="mx-3"
         name="payment"
         value="1"
+        [(ngModel)]="pago.codigo_tipo_pago"
       />
       <p class="text-black/80 text-sm font-medium pt-2 cursor-default"> Tarjeta de Débito/Crédito </p>
      </div>
@@ -38,6 +41,7 @@
        <input type="radio" class="mx-3"
         name="payment"
         value="2"
+        [(ngModel)]="pago.codigo_tipo_pago"
        />
        <p class="text-black/80 text-sm font-medium pt-1 cursor-default"> Paypal </p>
       </div>
@@ -48,6 +52,7 @@
        <input type="radio" class="mx-3"
         name="payment"
         value="3"
+        [(ngModel)]="pago.codigo_tipo_pago"
        />
        <p class="text-black/80 text-sm font-medium pt-2 cursor-default"> Bitcoin </p>
       </div>
@@ -56,7 +61,10 @@
      <div class="flex justify-between text-white mx-48 my-10 ">
       <button class="bg-red-500 w-1/4 py-1 rounded-sm"> Cancelar </button>
       <button class="bg-blue w-1/4 py-1 rounded-sm" > Atras </button>
-      <button class="bg-green-500 w-1/4 py-1 rounded-sm"> Procesar </button>
+      <button class="bg-green-500 w-1/4 py-1 rounded-sm" (click)="pagar()" > Procesar </button>
      </div>
   </div>
 </div>
+<!-- <pre>
+  {{pago|json}}
+</pre> -->
