@@ -12,7 +12,8 @@ export class FundacionService {
   private url: String;
   private _clodinary_key : string = "dwcjd1xpm";
   constructor(private http : HttpClient) {
-    this.url = "http://127.0.0.1:8000";
+    //this.url = "http://127.0.0.1:8000";
+    this.url = "https://samiradev.com/donations/public";
   }
   get cloudinaryKey() : string {
     return this._clodinary_key;

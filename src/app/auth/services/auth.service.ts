@@ -8,7 +8,8 @@ import { Foundation, FoundationResp } from '../interfaces/fundacion-interface';
   providedIn: 'root'
 })
 export class AuthService {
-  private URLAPI :string = "http://127.0.0.1:8000";
+ // private URLAPI :string = "http://127.0.0.1:8000";
+  private URLAPI :string = "https://samiradev.com/donations/public";
 
   constructor( private http : HttpClient, private cookieService : CookieService) { }
 

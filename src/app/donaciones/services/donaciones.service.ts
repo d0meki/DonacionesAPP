@@ -7,7 +7,8 @@ import { DonadorPerfil } from '../interfaces/donador-interface';
   providedIn: 'root'
 })
 export class DonacionesService {
-  private URL : string = "http://127.0.0.1:8000";
+  // private URL : string = "http://127.0.0.1:8000";
+  private URL : string = "https://samiradev.com/donations/public";
   constructor(private http : HttpClient) { }
 
   getProfile(id : number) : Observable<DonadorPerfil>{
