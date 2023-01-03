@@ -33,16 +33,17 @@ export class ProjectPageComponent implements OnInit {
   ngOnInit(): void {
     const user = this.authService.user;
     this.foundation_id = user.person.foundation.id;
-    this.customForm.patchValue({foundation_id: this.foundation_id});
+    this.customForm.patchValue({ foundation_id: this.foundation_id });
+   
   }
-  fieldValidator(field: string){
+  fieldValidator(field: string) {
     return this.customForm.controls[`${field}`].errors && this.customForm.controls[`${field}`].touched;
   }
-  submitProject(){
-    if(this.files.length > 1){
-      this.customForm.patchValue({ photos : ["1", "2"]})
+  submitProject() {
+    if (this.files.length > 1) {
+      this.customForm.patchValue({ photos: ["1", "2"] })
     }
-    if(this.customForm.invalid){
+    if (this.customForm.invalid) {
       this.customForm.markAllAsTouched();
     } else {
       this.progressState = true;
@@ -62,21 +63,21 @@ export class ProjectPageComponent implements OnInit {
       }, 2000);
     }
   }
-  addImage(image: any, number : number){
+  addImage(image: any, number: number) {
     this.files[number] = image;
     console.log(this.files);
   }
 
-  uploadImage(index : number, array : string[]){
+  uploadImage(index: number, array: string[]) {
     const fileImages = new FormData();
-      fileImages.append('file', this.files[index]);
-      fileImages.append('upload_preset', 'donaciones_cloudinary');
-      fileImages.append('cloud_name', this.fundacionService.cloudinaryKey)
+    fileImages.append('file', this.files[index]);
+    fileImages.append('upload_preset', 'donaciones_cloudinary');
+    fileImages.append('cloud_name', this.fundacionService.cloudinaryKey)
     this.fundacionService.uploadImage(fileImages)
-    .subscribe( (res) => {
-      array.push(res.url);
-      this.customForm.patchValue({photos: array})
-    })
+      .subscribe((res) => {
+        array.push(res.url);
+        this.customForm.patchValue({ photos: array })
+      })
   }
   changeProjectType(event: any){
     this.customForm.patchValue({project_type : event.target.value})

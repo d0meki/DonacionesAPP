@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Proyecto } from '../../interfaces/projects-interface';
 import { FundacionService } from '../../services/fundacion.service';
-
+import { WalletService } from '../../../shared/services/wallet.service';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -32,7 +32,7 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  get projectsList(){
+  get projectsList() {
     return this.Projects;
   }
 
