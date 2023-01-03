@@ -6,7 +6,6 @@ export const environment = {
   production: false,
   serverStripe: "http://localhost:8081",
   stripe_pk: "pk_test_51MKR32F4JIGYoZ3O01GnDGfxM9je3mE7Nf92su1nOrCBZEWwdfcrpvYxK6KaEwLZJMrxlzyqdaw9abdAXp5YuMie00M2L8eoaO"
-
 };
 
 /*
