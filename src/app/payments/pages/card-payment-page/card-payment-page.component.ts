@@ -156,7 +156,7 @@ async onpay(): Promise<any> {
 
       //TODO ENVIAMOS A NUESTRA API DONDE GENERAMOS (STRIPE) UN METODO DE PAGO BASADO EN EL TOKEN
       //TODO: tok_2646
-      this.payCardService.generateOrder({name: "Isaias", amount: this.customForm.controls['amount'].value, donatorId: this.donatorId, projectId: this.projectId})
+      this.payCardService.generateOrder({name: "Donador", amount: this.customForm.controls['amount'].value, donatorId: this.donatorId, projectId: this.projectId})
       .subscribe( res => {
         console.log(res);
         this.payCardService.sendPayment(token.id, res.order.localizator)
