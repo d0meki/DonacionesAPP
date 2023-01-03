@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Router, RouterModule, Routes } from "@angular/router";
+import { CardPaymentPageComponent } from "./pages/card-payment-page/card-payment-page.component";
 import { PaymentPageComponent } from "./pages/payment-page/payment-page.component";
 const routes : Routes = [
   {
@@ -9,6 +10,10 @@ const routes : Routes = [
         path: 'payment',
         component: PaymentPageComponent
       },
+      {
+        path: 'payment/cardpayment',
+        component: CardPaymentPageComponent
+      }
       // {
       //   path: '**',
       //   redirectTo: 'payment'

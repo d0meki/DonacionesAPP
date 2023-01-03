@@ -26,9 +26,20 @@ export class PaymentPageComponent implements OnInit {
   public CONT_ADDR = "0x559132691A00580D8f46641c655B90469198C378";
   public BANK_ADDR = "0x7e2B374Baebc5Ab58fBB85Bd989E2f555B9Df76c";
 
-  constructor(private payment: PaymentService, private router: Router, private walletService: WalletService) { }
+  constructor(private payment: PaymentService, 
+              private router: Router, 
+              private walletService: WalletService) { }
 
   ngOnInit(): void {
+  }
+  // change(event:any){
+  //   if(event.target.value === "1")
+  //   this.cardState = true;
+  //     else
+  //   this.cardState = false;
+  // }
+  updateValueAmount(event: Event){
+    console.log(event)
   }
   async pagar() {
     if (this.pago.codigo_tipo_pago == 2) {
@@ -50,7 +61,9 @@ export class PaymentPageComponent implements OnInit {
         console.log("no esta conectado a metamask")
         await this.connectToWallet();
       }
-    } else {
+    } else if (this.pago.codigo_tipo_pago == 1) {
+      this.router.navigate(['/payments/payment/cardpayment'])
+    }else {
       console.log("Otro metodo de pago");
     }
   }
