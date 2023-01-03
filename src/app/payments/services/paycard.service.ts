@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+// import { environment } from 'src/environments/environment'; //local
+import { environment } from 'src/environments/environment.prod'; //production
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaycardService {
-  public APIURL : string = "http://localhost:8081";
+  public APIURL : string = environment.serverStripe;
   constructor(private http: HttpClient) {}
 
   sendPayment(token: string, id: string ) : Observable<any> {
