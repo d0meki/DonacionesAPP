@@ -4,7 +4,9 @@ import { PaymentPageComponent } from './pages/payment-page/payment-page.componen
 import { RouterModule } from '@angular/router';
 import { PaymentsRoutingModule } from './payments-routing.module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,8 +15,10 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    PaymentsRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     RouterModule,
+    PaymentsRoutingModule,
     FormsModule
   ]
 })
