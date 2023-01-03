@@ -14,6 +14,7 @@ export class WalletService {
         try {
             if (!this.ethereum) return alert("Please install meta mask");
             const accounts = await this.ethereum.request({ method: 'eth_requestAccounts' });
+           /*  return accounts; */
         }
         catch (e) {
             throw new Error("No thereum object found")
