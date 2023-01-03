@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PaymentService {
   // private URLAPI :string = "http://localhost:8080";
-  private URLAPI :string = "https://samiradev.com/donations/public";
+  private URLAPI :string = "http://35.198.23.51:8080";
   constructor(private http : HttpClient) { }
   pagarConPayPal(pago:any): Observable<any>{
     return this.http.post(this.URLAPI+`/api/paypal/create-payment`,pago);
