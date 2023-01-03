@@ -6,6 +6,8 @@
         <label class="text-sm"> Monto a Donar</label>
         <input class="py-1 px-2 border-2 border-black/60 text-black/80 rounded-sm amount"
           type="number"
+          name="amount"
+          [(ngModel)]="amount"
         />
       </div>
       <div class="border">
@@ -28,16 +30,22 @@
       <input type="radio" class="mx-3"
         name="payment"
         value="1"
+        (change)="change($event)"
       />
       <p class="text-black/80 text-sm font-medium pt-2 cursor-default"> Tarjeta de Débito/Crédito </p>
      </div>
       <img alt="" src="../../../../assets/images/visamaster.png" width="100" height="50"/>
     </div>
+    <!-- <app-stripe-card *ngIf="cardState"
+      [monto]="amount"
+    >
+    </app-stripe-card> -->
     <div class="mx-48 flex justify-between py-4 px-3 bg-blue-200 border-l border-r border-black">
       <div class="flex">
        <input type="radio" class="mx-3"
         name="payment"
         value="2"
+        (change)="change($event)"
        />
        <p class="text-black/80 text-sm font-medium pt-1 cursor-default"> Paypal </p>
       </div>
@@ -48,6 +56,7 @@
        <input type="radio" class="mx-3"
         name="payment"
         value="3"
+        (change)="change($event)"
        />
        <p class="text-black/80 text-sm font-medium pt-2 cursor-default"> Bitcoin </p>
       </div>
@@ -56,7 +65,9 @@
      <div class="flex justify-between text-white mx-48 my-10 ">
       <button class="bg-red-500 w-1/4 py-1 rounded-sm"> Cancelar </button>
       <button class="bg-blue w-1/4 py-1 rounded-sm" > Atras </button>
-      <button class="bg-green-500 w-1/4 py-1 rounded-sm"> Procesar </button>
+      <button class="bg-green-500 w-1/4 py-1 rounded-sm"
+        (click)="payFundation()"
+      > Procesar </button>
      </div>
   </div>
 </div>
